@@ -20,7 +20,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	private ORB orb;
 	
 	public void setORB(ORB orb_val) {
-	    this.orb = orb_val; 
+	    this.orb = orb_val;
 	}
 	
 	@Override
@@ -46,6 +46,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 			Config_MTL.RECORD_LIST.add(doc_recorde_with_recordID);
 			Config_MTL.HASH_TABLE.put(capital_lastname, Config_MTL.RECORD_LIST);
 		}
+		System.out.println(Config_MTL.LOGGER);
 		Config_MTL.LOGGER.info("Manager: "+ managerId + " Creat Doctor Record: "+ "\n" +doc_recorde_with_recordID.toString());
 		return "Doctor Record Buid Succeed !" + "\n" +doc_recorde_with_recordID.toString();
 	}
@@ -87,7 +88,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	public String getRecordCounts(String managerId, String recordType) {
 		String lvl_hash_size = sendMessageToOtherServer(Config_MTL.SERVER_PORT_LVL, recordType);
 		String ddo_hash_size = sendMessageToOtherServer(Config_MTL.SERVER_PORT_DDO, recordType);
-		String mtl_hash_size = Clinic_MTL_Server.getLocalHashSize(recordType);
+		String mtl_hash_size = getLocalHashSize(recordType);
 		String result = mtl_hash_size + "\n" + lvl_hash_size + "\n" + ddo_hash_size + "\n";
 		Config_MTL.LOGGER.info("Manager: "+ managerId + " search RecordCounts: "+ "\n" + result);
 		return result;
@@ -222,7 +223,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		
 	    try {
 	    	socket = new DatagramSocket();
-	    	if(content.equals("getNumber")){
+	    	if(content.equals("getRecordIdNumber")){
 	    		message = (new String(content)).getBytes();
 	    	}else{
 	    		message = (new String(requestcode+content)).getBytes();
@@ -245,5 +246,35 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 				}
 			}
 		return null; 
+	}
+	
+	/**
+	 * Check local hash table size and return the value.
+	 * @param recordType
+	 * @return
+	 */
+	public static synchronized String getLocalHashSize(String recordType){
+		int dr_num = 0;
+		int nr_num = 0;
+		
+		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_MTL.HASH_TABLE.entrySet()){
+			for(RecordInfo record:entry.getValue()){
+				switch(record.getRecordID().substring(0, 2)){
+				case "DR":
+					dr_num++;
+					break;
+				case "NR":
+					nr_num++;
+					break;
+				}
+			}
+		}
+		if(recordType.equalsIgnoreCase("dr")){
+			return "MTL "+"DR: "+dr_num;
+		}else if(recordType.equalsIgnoreCase("nr")){
+			return "MTL "+"NR: "+nr_num;
+		}else{
+			return "MTL "+"ALL: "+(dr_num+nr_num);
+		}
 	}
 }

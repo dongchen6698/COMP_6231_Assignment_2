@@ -58,6 +58,7 @@ public class RecordID_Assign_Server {
 			this.socket = n_socket;
 			this.request = n_request;
 			String content = new String(request.getData()).trim();
+			System.out.println(content);
 			switch (content) {
 			case "getRecordIdNumber":
 				result = Integer.toString(RecordID_Assign_Server.getSartNumber());
