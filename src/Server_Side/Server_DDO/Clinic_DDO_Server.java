@@ -1,8 +1,6 @@
 package Server_Side.Server_DDO;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;

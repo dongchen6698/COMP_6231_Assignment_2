@@ -14,7 +14,6 @@ import DSMS_CORBA.DSMSPOA;
 import Record_Type.DoctorRecord;
 import Record_Type.NurseRecord;
 import Record_Type.RecordInfo;
-import Server_Side.Server_LVL.Config_LVL;
 
 public class Clinic_MTL_Impl extends DSMSPOA{
 
@@ -280,6 +279,12 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		return null; 
 	}
 	
+	/**
+	 * Transfer record to other server, based on recordID and remote Clinic Server name.
+	 * @param recordID
+	 * @param remoteClinicServerName
+	 * @return
+	 */
 	public static String transferRecordToOtherServer(String recordID, String remoteClinicServerName){
 		int serverPort = 0;
 		

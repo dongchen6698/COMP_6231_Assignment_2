@@ -12,6 +12,9 @@ import Record_Type.RecordInfo;
 
 public class Clinic_DDO_UDP_Listener implements Runnable{
 	
+	/**
+	 * Default constructor.
+	 */
 	public Clinic_DDO_UDP_Listener() {
 		
 	}
@@ -122,6 +125,11 @@ public class Clinic_DDO_UDP_Listener implements Runnable{
 		}
 	}
 	
+	/**
+	 * Input new record which transfered from other server into local hash map
+	 * @param recordInfo
+	 * @return
+	 */
 	public static synchronized String insertRecordInLocalHashMap(String recordInfo){
 		String[] record = recordInfo.split("\n");
 		if(record[0].contains("DR")){

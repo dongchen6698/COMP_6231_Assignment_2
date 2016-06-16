@@ -279,6 +279,12 @@ public class Clinic_DDO_Impl extends DSMSPOA{
 		return null; 
 	}
 	
+	/**
+	 * Transfer record to other server, based on recordID and remote Clinic Server name.
+	 * @param recordID
+	 * @param remoteClinicServerName
+	 * @return
+	 */
 	public static String transferRecordToOtherServer(String recordID, String remoteClinicServerName){
 		int serverPort = 0;
 		

@@ -1,8 +1,6 @@
 package Server_Side.Server_MTL;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -49,11 +47,18 @@ public class Clinic_MTL_Server {
 		}
 	}
 	
+	/**
+	 * Open UDP Listener to receive message from other server.
+	 */
 	public static void openUDPListener(){
 		Thread udp_listener = new Thread(new Clinic_MTL_UDP_Listener());
 		udp_listener.start();
 	}
 	
+	/**
+	 * Initial the CORBA stuff.
+	 * @param args
+	 */
 	public static void initCORBA(String[] args){
 		try {
 			//initial the port number of 1050;
