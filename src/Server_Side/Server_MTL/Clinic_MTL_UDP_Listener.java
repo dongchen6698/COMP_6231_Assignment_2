@@ -5,51 +5,25 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
-import Client_Side.ManagerClients;
+import Record_Type.DoctorRecord;
+import Record_Type.NurseRecord;
 import Record_Type.RecordInfo;
+import Server_Side.Server_LVL.Config_LVL;
 
-public class Clinic_MTL_UDP_Listening {
-	public static void main(String[] args) {
-		System.out.println("start listening montreal request.");
-		initLogger(Config_MTL.SERVER_NAME);
-		openUDPListener();
+public class Clinic_MTL_UDP_Listener implements Runnable{
+	
+	public Clinic_MTL_UDP_Listener() {
+		
 	}
 	
-	/**
-	 * Initial the Logger function.
-	 * @param server_name
-	 */
-	public static void initLogger(String server_name){
-		try {
-			String dir = "Server_Side_Log/";
-			Config_MTL.LOGGER = Logger.getLogger(ManagerClients.class.getName());
-			Config_MTL.LOGGER.setUseParentHandlers(false);
-			Config_MTL.FH = new FileHandler(dir+server_name+"_UDP.log",true);
-			Config_MTL.LOGGER.addHandler(Config_MTL.FH);
-			SimpleFormatter formatter = new SimpleFormatter();
-			Config_MTL.FH.setFormatter(formatter);
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Open UDP listening port to check ManagerID and receive the other server request to get local hash table size.
-	 * Request 001 for check ManagerID
-	 * Request 002 for get local hash table size
-	 */
-	public static void openUDPListener(){
+	@Override
+	public void run() {
 		DatagramSocket socket = null;
 		try{
 			socket = new DatagramSocket(Config_MTL.LOCAL_LISTENING_PORT);
 			while(true){
-				byte[] buffer = new byte[100]; 
+				byte[] buffer = new byte[1000]; 
 				DatagramPacket request = new DatagramPacket(buffer, buffer.length);
 				socket.receive(request);
 				Config_MTL.LOGGER.info("Get request: " + (new String(request.getData()).trim())+ "\n" + "Start a new thread to handle this.");
@@ -61,7 +35,7 @@ public class Clinic_MTL_UDP_Listening {
 		}
 		finally{
 			if(socket != null) socket.close();
-		}
+		}		
 	}
 	
 	/**
@@ -79,12 +53,16 @@ public class Clinic_MTL_UDP_Listening {
 			String requestcode = new String(request.getData()).trim().substring(0, 3);
 			switch (requestcode) {
 			case "001":
-				Config_MTL.LOGGER.info("Request code: " + requestcode + ", " + "Check ManagerID: " + (new String(request.getData()).trim().substring(3)+ " valid or not."));
-				result = checkManagerID(new String(request.getData()).trim().substring(3));
+				Config_MTL.LOGGER.info("Request code: " + requestcode + ", " + "Check ManagerID: " + (new String(request.getData()).trim().substring(4)+ " valid or not."));
+				result = checkManagerID(new String(request.getData()).trim().substring(4));
 				break;
 			case "002":
-				Config_MTL.LOGGER.info("Request code: " + requestcode + ", " + "Search HashMap, SearchType: " + (new String(request.getData()).trim().substring(3)));
-				result = getLocalHashSize(new String(request.getData()).trim().substring(3));
+				Config_MTL.LOGGER.info("Request code: " + requestcode + ", " + "Search HashMap, SearchType: " + (new String(request.getData()).trim().substring(4)));
+				result = getLocalHashSize(new String(request.getData()).trim().substring(4));
+				break;
+			case "003":
+				Config_MTL.LOGGER.info("Request code: " + requestcode + ", " + "Transfer Record, Record: " + (new String(request.getData()).trim().substring(4)));
+				result = insertRecordInLocalHashMap(new String(request.getData()).trim().substring(4));
 				break;
 			}
 			this.start();
@@ -143,5 +121,29 @@ public class Clinic_MTL_UDP_Listening {
 		}else{
 			return "MTL "+"ALL: "+(dr_num+nr_num);
 		}
+	}
+	
+	public static synchronized String insertRecordInLocalHashMap(String recordInfo){
+		String[] record = recordInfo.split("\n");
+		if(record[0].contains("DR")){
+			if(Config_MTL.HASH_TABLE.containsKey(record[2].split(": ")[1].charAt(0))){
+				Config_MTL.RECORD_LIST = Config_MTL.HASH_TABLE.get(record[2].split(": ")[1].charAt(0));
+			}else{
+				Config_MTL.RECORD_LIST = new ArrayList<RecordInfo>();
+			}
+			Config_MTL.RECORD_LIST.add(new RecordInfo(record[0].split(": ")[1], new DoctorRecord(record[1].split(": ")[1], record[2].split(": ")[1], record[3].split(": ")[1], record[4].split(": ")[1], record[5].split(": ")[1], record[6].split(": ")[1])));
+			Config_MTL.HASH_TABLE.put(record[2].split(": ")[1].charAt(0), Config_MTL.RECORD_LIST);
+			return "Transfer doctor record success.";
+		}else if(record[0].contains("NR")){
+			if(Config_MTL.HASH_TABLE.containsKey(record[2].split(": ")[1].charAt(0))){
+				Config_MTL.RECORD_LIST = Config_MTL.HASH_TABLE.get(record[2].split(": ")[1].charAt(0));
+			}else{
+				Config_MTL.RECORD_LIST = new ArrayList<RecordInfo>();
+			}
+			Config_MTL.RECORD_LIST.add(new RecordInfo(record[0].split(": ")[1], new NurseRecord(record[1].split(": ")[1], record[2].split(": ")[1], record[3].split(": ")[1], record[4].split(": ")[1], record[5].split(": ")[1])));
+			Config_MTL.HASH_TABLE.put(record[2].split(": ")[1].charAt(0), Config_MTL.RECORD_LIST);
+			return "Transfer nurse record success.";
+		}
+		return "Transfer record fail.";
 	}
 }

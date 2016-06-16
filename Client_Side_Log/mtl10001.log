@@ -1,0 +1,23 @@
+Jun 16, 2016 1:08:50 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10001 log in DSMS.
+Jun 16, 2016 1:08:52 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Doctor Record.
+Jun 16, 2016 1:09:00 PM Client_Side.ManagerClients main
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: adf
+Phone: 123
+specialization: av
+location: mtl
+
+Jun 16, 2016 4:53:50 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10001 log in DSMS.
+Jun 16, 2016 4:53:52 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Doctor Record.
+Jun 16, 2016 4:58:35 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10001 log in DSMS.
+Jun 16, 2016 4:58:36 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Nurse Record.

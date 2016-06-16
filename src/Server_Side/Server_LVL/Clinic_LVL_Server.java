@@ -1,4 +1,4 @@
-package Server_Side.Server_MTL;
+package Server_Side.Server_LVL;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,13 +19,13 @@ import Client_Side.ManagerClients;
 import DSMS_CORBA.DSMS;
 import DSMS_CORBA.DSMSHelper;
 
-public class Clinic_MTL_Server {
+public class Clinic_LVL_Server {
 	public static void main(String[] args) {
-		System.out.println("Initial Logger Of Server Montreal...");
-		initLogger(Config_MTL.SERVER_NAME);
-		System.out.println("Initial UDP Listener Of Server Montreal...");
+		System.out.println("Initial Logger Of Server Laval...");
+		initLogger(Config_LVL.SERVER_NAME);
+		System.out.println("Initial UDP Listener Of Server Laval...");
 		openUDPListener();
-		System.out.println("Initial CORBA Of Server Montreal...");
+		System.out.println("Initial CORBA Of Server Laval...");
 		initCORBA(args);		
 	}
 	
@@ -36,12 +36,12 @@ public class Clinic_MTL_Server {
 	public static void initLogger(String server_name){
 		try {
 			String dir = "Server_Side_Log/";
-			Config_MTL.LOGGER = Logger.getLogger(ManagerClients.class.getName());
-			Config_MTL.LOGGER.setUseParentHandlers(false);
-			Config_MTL.FH = new FileHandler(dir+server_name+".log",true);
-			Config_MTL.LOGGER.addHandler(Config_MTL.FH);
+			Config_LVL.LOGGER = Logger.getLogger(ManagerClients.class.getName());
+			Config_LVL.LOGGER.setUseParentHandlers(false);
+			Config_LVL.FH = new FileHandler(dir+server_name+".log",true);
+			Config_LVL.LOGGER.addHandler(Config_LVL.FH);
 			SimpleFormatter formatter = new SimpleFormatter();
-			Config_MTL.FH.setFormatter(formatter);
+			Config_LVL.FH.setFormatter(formatter);
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -50,7 +50,7 @@ public class Clinic_MTL_Server {
 	}
 	
 	public static void openUDPListener(){
-		Thread udp_listener = new Thread(new Clinic_MTL_UDP_Listener());
+		Thread udp_listener = new Thread(new Clinic_LVL_UDP_Listener());
 		udp_listener.start();
 	}
 	
@@ -58,7 +58,7 @@ public class Clinic_MTL_Server {
 		try {
 			//initial the port number of 1050;
 			Properties props = new Properties();
-	        props.put("org.omg.CORBA.ORBInitialPort", Config_MTL.ORB_INITIAL_PORT);
+	        props.put("org.omg.CORBA.ORBInitialPort", Config_LVL.ORB_INITIAL_PORT);
 	        
 			// create and initialize the ORB
 			ORB orb = ORB.init(args, props);
@@ -68,7 +68,7 @@ public class Clinic_MTL_Server {
 			rootpoa.the_POAManager().activate();
 
 			// create servant and register it with the ORB
-			Clinic_MTL_Impl mtl_Impl = new Clinic_MTL_Impl();
+			Clinic_LVL_Impl mtl_Impl = new Clinic_LVL_Impl();
 			mtl_Impl.setORB(orb); 
 
 			// get object reference from the servant
@@ -84,7 +84,7 @@ public class Clinic_MTL_Server {
 			NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
 			// bind the Object Reference in Naming
-			String name = Config_MTL.SERVER_NAME;
+			String name = Config_LVL.SERVER_NAME;
 			NameComponent path[] = ncRef.to_name(name);
 			ncRef.rebind(path, href);
 

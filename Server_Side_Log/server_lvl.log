@@ -1,0 +1,282 @@
+Jun 16, 2016 4:47:06 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 001
+lvl10000
+Start a new thread to handle this.
+Jun 16, 2016 4:47:06 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: lvl10000 valid or not.
+Jun 16, 2016 4:47:32 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 4:47:32 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 4:49:23 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 4:49:23 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 4:52:43 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 4:52:43 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:09:15 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 5:09:15 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:12:11 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 5:12:11 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:19:55 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 5:19:55 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:20:06 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:20:06 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:23:21 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:23:21 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:23:41 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+nr
+Start a new thread to handle this.
+Jun 16, 2016 5:23:41 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: nr
+Jun 16, 2016 5:25:00 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:25:00 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:25:05 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+nr
+Start a new thread to handle this.
+Jun 16, 2016 5:25:05 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: nr
+Jun 16, 2016 5:25:32 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 5:25:32 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:25:36 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:25:36 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:31:28 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 5:31:28 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:31:32 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:31:32 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:32:37 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:32:38 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:32:54 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Start a new thread to handle this.
+Jun 16, 2016 5:32:54 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR00001
+First Name: one
+Last Name: Li
+Address: Montreal
+Phone: 5141234567
+specialization: Surgery
+location: mtl
+Jun 16, 2016 5:33:00 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 16, 2016 5:33:00 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 16, 2016 5:51:27 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 001
+lvl10000
+Start a new thread to handle this.
+Jun 16, 2016 5:51:27 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: lvl10000 valid or not.
+Jun 16, 2016 5:51:31 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 0
+MTL DR: 2
+DDO DR: 1
+
+Jun 16, 2016 5:52:08 PM Server_Side.Server_LVL.Clinic_LVL_Impl createDRecord
+INFO: Manager: lvl10000 Creat Doctor Record: 
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: lval
+Phone: 123123
+specialization: abc
+location: lvl
+
+Jun 16, 2016 5:52:11 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 1
+MTL DR: 2
+DDO DR: 1
+
+Jun 16, 2016 5:52:37 PM Server_Side.Server_LVL.Clinic_LVL_Impl transferRecord
+INFO: Manager: lvl10000 transfer recordID: dr10000 to mtlsuccess
+Jun 16, 2016 5:52:40 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 0
+MTL DR: 3
+DDO DR: 1
+
+Jun 16, 2016 5:53:10 PM Server_Side.Server_LVL.Clinic_LVL_Impl createDRecord
+INFO: Manager: lvl10000 Creat Doctor Record: 
+RecordID: DR10001
+First Name: abc
+Last Name: che
+Address: ddo
+Phone: 123123
+specialization: abc
+location: lvl
+
+Jun 16, 2016 5:53:16 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 1
+MTL DR: 3
+DDO DR: 1
+
+Jun 16, 2016 5:53:30 PM Server_Side.Server_LVL.Clinic_LVL_Impl transferRecord
+INFO: Manager: lvl10000 transfer recordID: dr10001 to ddosuccess
+Jun 16, 2016 5:53:34 PM Server_Side.Server_LVL.Clinic_LVL_Impl getRecordCounts
+INFO: Manager: lvl10000 search RecordCounts: 
+LVL DR: 0
+MTL DR: 3
+DDO DR: 2
+

@@ -19,6 +19,7 @@ public class RecordID_Assign_Server {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("RecordID Assign Server Ready And Waiting ...");
 		openUDPListener();
 	}
 	

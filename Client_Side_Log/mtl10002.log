@@ -1,0 +1,27 @@
+Jun 16, 2016 1:13:28 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10002 log in DSMS.
+Jun 16, 2016 1:13:30 PM Client_Side.ManagerClients main
+INFO: Manager Choose Get Record Counts.
+Jun 16, 2016 1:13:33 PM Client_Side.ManagerClients main
+INFO: Get Record Counts: 
+MTL DR: 2
+
+Jun 16, 2016 1:13:39 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Doctor Record.
+Jun 16, 2016 1:13:47 PM Client_Side.ManagerClients main
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abv
+location: mtl
+
+Jun 16, 2016 1:13:49 PM Client_Side.ManagerClients main
+INFO: Manager Choose Get Record Counts.
+Jun 16, 2016 1:13:51 PM Client_Side.ManagerClients main
+INFO: Get Record Counts: 
+MTL DR: 3
+

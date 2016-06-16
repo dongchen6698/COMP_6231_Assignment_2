@@ -18,6 +18,7 @@ import org.omg.CosNaming.NamingContextExtHelper;
 
 import DSMS_CORBA.DSMS;
 import DSMS_CORBA.DSMSHelper;
+import Server_Side.Server_MTL.Config_MTL;
 
 /**
  * This is a Client side of DSMS.
@@ -86,7 +87,7 @@ public class ManagerClients {
 		
 	    try {
 	    	socket = new DatagramSocket();
-	    	byte[] message = (new String(requestcode+n_managerID)).getBytes();
+	    	byte[] message = (new String(requestcode+"\n"+n_managerID)).getBytes();
 	    	InetAddress host = InetAddress.getByName(hostname);
 	    	DatagramPacket request = new DatagramPacket(message, message.length, host, serverPort);
 	    	socket.send(request);
@@ -160,7 +161,8 @@ public class ManagerClients {
 		System.out.println("2. Create Nurse Record");
 		System.out.println("3. Get Record Counts");
 		System.out.println("4. Edit Record");
-		System.out.println("5. Exit DSMS");
+		System.out.println("5. Transfer Record");
+		System.out.println("6. Exit DSMS");
 	}
 	
 	/**
@@ -229,7 +231,7 @@ public class ManagerClients {
 					String d_phone = keyboard.next();
 					System.out.println("Please input the Specialization");
 					String d_specialization = keyboard.next();
-					System.out.println("Please input the Location(mtl,lvl,ddo)");
+					System.out.println("Please input the Location(mtl/lvl/ddo)");
 					String d_location =keyboard.next();
 					String d_result = Config_Client.DSMS_IMPL.createDRecord(Config_Client.MANAGER_ID, d_firstname, d_lastname, d_address, d_phone, d_specialization, d_location);
 					System.out.println(d_result);
@@ -269,12 +271,12 @@ public class ManagerClients {
 				case 4:
 					Config_Client.LOGGER.info("Manager Choose Edit Record.");
 					System.out.println("Please input the RecordID");
-					String recordID = keyboard.next();
+					String e_recordID = keyboard.next();
 					System.out.println("Please input the FieldName");
-					String fieldname = keyboard.next();
+					String e_fieldname = keyboard.next();
 					System.out.println("Please input the New Value");
-					String newvalue = keyboard.next();
-					String e_result = Config_Client.DSMS_IMPL.editRecord(Config_Client.MANAGER_ID, recordID, fieldname, newvalue);
+					String e_newvalue = keyboard.next();
+					String e_result = Config_Client.DSMS_IMPL.editRecord(Config_Client.MANAGER_ID, e_recordID, e_fieldname, e_newvalue);
 					System.out.println(e_result);
 					if(!e_result.contains("is not right")){
 						Config_Client.LOGGER.info("Manager Creat Doctor Record Succeed!" + "\n" + e_result);
@@ -282,6 +284,19 @@ public class ManagerClients {
 					showMenu(Config_Client.MANAGER_ID);
 					break;
 				case 5:
+					Config_Client.LOGGER.info("Manager Choose Transfer Record.");
+					System.out.println("Please input the RecordID");
+					String t_recordID = keyboard.next();
+					System.out.println("Please input the remote clinic server name.(mtl/lvl/ddo)");
+					String t_remoteClinicServerName = keyboard.next();
+					String t_result = Config_Client.DSMS_IMPL.transferRecord(Config_Client.MANAGER_ID, t_recordID, t_remoteClinicServerName);
+					System.out.println(t_result);
+					if(!t_result.contains("is not right")){
+						Config_Client.LOGGER.info("Manager Transfer Record Succeed!" + "\n" + t_result);
+					}
+					showMenu(Config_Client.MANAGER_ID);
+					break;
+				case 6:
 					Config_Client.LOGGER.info("Manager Exit the DSMS");
 					System.out.println("Have a nice day!");
 					keyboard.close();

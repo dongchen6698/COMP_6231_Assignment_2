@@ -1,4 +1,4 @@
-package Server_Side.Server_MTL;
+package Server_Side.Server_DDO;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -14,9 +14,8 @@ import DSMS_CORBA.DSMSPOA;
 import Record_Type.DoctorRecord;
 import Record_Type.NurseRecord;
 import Record_Type.RecordInfo;
-import Server_Side.Server_LVL.Config_LVL;
 
-public class Clinic_MTL_Impl extends DSMSPOA{
+public class Clinic_DDO_Impl extends DSMSPOA{
 
 	private ORB orb;
 	
@@ -38,21 +37,21 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		RecordInfo doc_recorde_with_recordID = null;
 		
 		Character capital_lastname = lastName.charAt(0);
-		if(Config_MTL.HASH_TABLE.containsKey(capital_lastname)){
-			Config_MTL.RECORD_LIST = Config_MTL.HASH_TABLE.get(capital_lastname);
+		if(Config_DDO.HASH_TABLE.containsKey(capital_lastname)){
+			Config_DDO.RECORD_LIST = Config_DDO.HASH_TABLE.get(capital_lastname);
 		}else{
-			Config_MTL.RECORD_LIST = new ArrayList<RecordInfo>();
+			Config_DDO.RECORD_LIST = new ArrayList<RecordInfo>();
 		}
 		DoctorRecord doc_recorde = new DoctorRecord(firstName, lastName, address, phone, specialization, location);
-		recordID = "DR" + sendMessageToOtherServer(Config_MTL.SERVER_PORT_RECORDID_ASSIGN, "getRecordIdNumber", "");
+		recordID = "DR" + sendMessageToOtherServer(Config_DDO.SERVER_PORT_RECORDID_ASSIGN, "getRecordIdNumber", "");
 		doc_recorde_with_recordID = new RecordInfo(recordID, doc_recorde);
 		
 		synchronized (this) {
-			Config_MTL.RECORD_LIST.add(doc_recorde_with_recordID);
-			Config_MTL.HASH_TABLE.put(capital_lastname, Config_MTL.RECORD_LIST);
+			Config_DDO.RECORD_LIST.add(doc_recorde_with_recordID);
+			Config_DDO.HASH_TABLE.put(capital_lastname, Config_DDO.RECORD_LIST);
 		}
-		System.out.println(Config_MTL.LOGGER);
-		Config_MTL.LOGGER.info("Manager: "+ managerId + " Creat Doctor Record: "+ "\n" +doc_recorde_with_recordID.toString());
+		System.out.println(Config_DDO.LOGGER);
+		Config_DDO.LOGGER.info("Manager: "+ managerId + " Creat Doctor Record: "+ "\n" +doc_recorde_with_recordID.toString());
 		return "Doctor Record Buid Succeed !" + "\n" +doc_recorde_with_recordID.toString();
 	}
 
@@ -72,53 +71,53 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		RecordInfo nur_recorde_with_recordID = null;
 		 
 		Character capital_lastname = lastName.charAt(0);
-		if(Config_MTL.HASH_TABLE.containsKey(capital_lastname)){
-			Config_MTL.RECORD_LIST = Config_MTL.HASH_TABLE.get(capital_lastname);
+		if(Config_DDO.HASH_TABLE.containsKey(capital_lastname)){
+			Config_DDO.RECORD_LIST = Config_DDO.HASH_TABLE.get(capital_lastname);
 		}else{
-			Config_MTL.RECORD_LIST = new ArrayList<RecordInfo>();
+			Config_DDO.RECORD_LIST = new ArrayList<RecordInfo>();
 		}
 		NurseRecord nur_recorde = new NurseRecord(firstName, lastName, designation, status, statusDate);
-		recordID = "NR" + sendMessageToOtherServer(Config_MTL.SERVER_PORT_RECORDID_ASSIGN, "getRecordIdNumber", "");
+		recordID = "NR" + sendMessageToOtherServer(Config_DDO.SERVER_PORT_RECORDID_ASSIGN, "getRecordIdNumber", "");
 		nur_recorde_with_recordID = new RecordInfo(recordID, nur_recorde);
 		
 		synchronized (this) {
-			Config_MTL.RECORD_LIST.add(nur_recorde_with_recordID);
-			Config_MTL.HASH_TABLE.put(capital_lastname, Config_MTL.RECORD_LIST);
+			Config_DDO.RECORD_LIST.add(nur_recorde_with_recordID);
+			Config_DDO.HASH_TABLE.put(capital_lastname, Config_DDO.RECORD_LIST);
 		}
-		Config_MTL.LOGGER.info("Manager: "+ managerId + " Creat Nurse Record: "+ "\n" +nur_recorde_with_recordID.toString());
+		Config_DDO.LOGGER.info("Manager: "+ managerId + " Creat Nurse Record: "+ "\n" +nur_recorde_with_recordID.toString());
 		return "Nurse Record Buid Succeed !" + "\n" +nur_recorde_with_recordID.toString();
 	}
 
 	@Override
 	public String getRecordCounts(String managerId, String recordType) {
-		String lvl_hash_size = sendMessageToOtherServer(Config_MTL.SERVER_PORT_LVL, recordType, "002");
-		String ddo_hash_size = sendMessageToOtherServer(Config_MTL.SERVER_PORT_DDO, recordType, "002");
+		String lvl_hash_size = sendMessageToOtherServer(Config_DDO.SERVER_PORT_MTL, recordType, "002");
+		String ddo_hash_size = sendMessageToOtherServer(Config_DDO.SERVER_PORT_LVL, recordType, "002");
 		String mtl_hash_size = getLocalHashSize(recordType);
 		String result = mtl_hash_size + "\n" + lvl_hash_size + "\n" + ddo_hash_size + "\n";
-		Config_MTL.LOGGER.info("Manager: "+ managerId + " search RecordCounts: "+ "\n" + result);
+		Config_DDO.LOGGER.info("Manager: "+ managerId + " search RecordCounts: "+ "\n" + result);
 		return result;
 	}
 
 	@Override
 	public String editRecord(String managerId, String recordID, String fieldName, String newValue) {
-		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_MTL.HASH_TABLE.entrySet()){
+		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_DDO.HASH_TABLE.entrySet()){
 			for(RecordInfo record:entry.getValue()){
 				if(recordID.equalsIgnoreCase(record.getRecordID())){
 					if(recordID.contains("DR")||recordID.contains("dr")){
 						if(fieldName.equalsIgnoreCase("Address")){
 							record.getDoctorRecord().setAddress(newValue);
-							Config_MTL.LOGGER.info("Manager: "+ managerId + " edit the Address of Doctor Record: "+ "\n" + record.toString());
+							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Address of Doctor Record: "+ "\n" + record.toString());
 							return "edit succeed !\n"+record.toString();
 						}else if(fieldName.equalsIgnoreCase("Phone")){
 							record.getDoctorRecord().setPhone(newValue);
-							Config_MTL.LOGGER.info("Manager: "+ managerId + " edit the phone of Doctor Record: "+ "\n" + record.toString());
+							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the phone of Doctor Record: "+ "\n" + record.toString());
 							return "edit succeed !\n"+record.toString();
 						}else if (fieldName.equalsIgnoreCase("Location")){
 							if(!checkLocation(newValue)){
 								return "Location is not right. Please input (mtl,lvl or ddo).\n";
 							}
 							record.getDoctorRecord().setLocation(newValue);
-							Config_MTL.LOGGER.info("Manager: "+ managerId + " edit the Location of Doctor Record: "+ "\n" + record.toString());
+							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Location of Doctor Record: "+ "\n" + record.toString());
 							return "edit succeed !\n"+record.toString();
 						}
 					}else if(recordID.contains("NR")||recordID.contains("nr")){
@@ -127,18 +126,18 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 								return "Designation is not right. Please input (junior or senior).\n";
 							}
 							record.getNurseRecord().setDesignation(newValue);
-							Config_MTL.LOGGER.info("Manager: "+ managerId + " edit the Designation of Nurse Record: "+ "\n" + record.toString());
+							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Designation of Nurse Record: "+ "\n" + record.toString());
 							return "edit succeed !\n"+record.toString();
 						}else if(fieldName.equalsIgnoreCase("Status")){
 							if(!checkStatus(newValue)){
 								return "Status is not right. Please input (active or terminated).\n";
 							}
 							record.getNurseRecord().setStatus(newValue);
-							Config_MTL.LOGGER.info("Manager: "+ managerId + " edit the Status of Nurse Record: "+ "\n" + record.toString());
+							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Status of Nurse Record: "+ "\n" + record.toString());
 							return "edit succeed !\n"+record.toString();
 						}else if (fieldName.equalsIgnoreCase("statusDate")){
 							record.getNurseRecord().setStatusDate(newValue);
-							Config_MTL.LOGGER.info("Manager: "+ managerId + " edit the Status date of Nurse Record: "+ "\n" + record.toString());
+							Config_DDO.LOGGER.info("Manager: "+ managerId + " edit the Status date of Nurse Record: "+ "\n" + record.toString());
 							return "edit succeed !\n"+record.toString();
 						}
 						
@@ -154,7 +153,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		if(!checkRecordIDExistOrNot(recordID)){
 			return "RecordID is not right. Please input again.\n";
 		}
-		if(!remoteClinicServerName.equalsIgnoreCase("mtl")){
+		if(!remoteClinicServerName.equalsIgnoreCase("ddo")){
 			if(!checkLocation(remoteClinicServerName)){
 				return "Location is not right. Please input (mtl,lvl or ddo).\n";
 			}
@@ -162,7 +161,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 			return "Location is not right. You can not transfer record to sever itself.";
 		}
 		String result = transferRecordToOtherServer(recordID, remoteClinicServerName);
-		Config_MTL.LOGGER.info("Manager: "+ managerId + " transfer recordID: "+ recordID + " to " + remoteClinicServerName + "success");
+		Config_DDO.LOGGER.info("Manager: "+ managerId + " transfer recordID: "+ recordID + " to " + remoteClinicServerName + "success");
 		return result;
 	}
 	
@@ -172,7 +171,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	 * @return
 	 */
 	public static Boolean checkRecordIDExistOrNot(String recordID){
-		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_MTL.HASH_TABLE.entrySet()){
+		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_DDO.HASH_TABLE.entrySet()){
 			for(RecordInfo record:entry.getValue()){
 				if(recordID.equalsIgnoreCase(record.getRecordID())){
 					return true;
@@ -188,7 +187,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	 * @return
 	 */
 	public static Boolean checkLocation(String location){
-		for(Config_MTL.D_LOCATION d_location: Config_MTL.D_LOCATION.values()){
+		for(Config_DDO.D_LOCATION d_location: Config_DDO.D_LOCATION.values()){
 			if(location.equals(d_location.toString())){
 				return true;
 			}
@@ -202,7 +201,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	 * @return
 	 */
 	public static Boolean checkDesignation(String designation){
-		for(Config_MTL.N_DESIGNATION n_designation: Config_MTL.N_DESIGNATION.values()){
+		for(Config_DDO.N_DESIGNATION n_designation: Config_DDO.N_DESIGNATION.values()){
 			if(designation.equals(n_designation.toString())){
 				return true;
 			}
@@ -216,7 +215,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	 * @return
 	 */
 	public static Boolean checkStatus(String status){
-		for(Config_MTL.N_STATUS n_status: Config_MTL.N_STATUS.values()){
+		for(Config_DDO.N_STATUS n_status: Config_DDO.N_STATUS.values()){
 			if(status.equals(n_status.toString())){
 				return true;
 			}
@@ -249,7 +248,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 	 */
 	public static String sendMessageToOtherServer(int serverPort, String content, String requestCode){
 		DatagramSocket socket = null;
-		String hostname = Config_MTL.HOST_NAME;
+		String hostname = Config_DDO.HOST_NAME;
 		String requestcode = requestCode;
 		byte[] message = null;
 		
@@ -284,14 +283,14 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		int serverPort = 0;
 		
 		if(remoteClinicServerName.equalsIgnoreCase("mtl")){
-			serverPort = Config_MTL.SERVER_PORT_MTL;
+			serverPort = Config_DDO.SERVER_PORT_MTL;
 		}else if(remoteClinicServerName.equalsIgnoreCase("lvl")){
-			serverPort = Config_MTL.SERVER_PORT_LVL;
+			serverPort = Config_DDO.SERVER_PORT_LVL;
 		}else if(remoteClinicServerName.equalsIgnoreCase("ddo")){
-			serverPort = Config_MTL.SERVER_PORT_DDO;
+			serverPort = Config_DDO.SERVER_PORT_DDO;
 		}
 		
-		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_MTL.HASH_TABLE.entrySet()){
+		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_DDO.HASH_TABLE.entrySet()){
 			for(RecordInfo record:entry.getValue()){
 				if(recordID.equalsIgnoreCase(record.getRecordID())){
 					String result = sendMessageToOtherServer(serverPort, record.toString(), "003");
@@ -314,7 +313,7 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 		int dr_num = 0;
 		int nr_num = 0;
 		
-		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_MTL.HASH_TABLE.entrySet()){
+		for(Map.Entry<Character, ArrayList<RecordInfo>> entry:Config_DDO.HASH_TABLE.entrySet()){
 			for(RecordInfo record:entry.getValue()){
 				switch(record.getRecordID().substring(0, 2)){
 				case "DR":
@@ -327,11 +326,11 @@ public class Clinic_MTL_Impl extends DSMSPOA{
 			}
 		}
 		if(recordType.equalsIgnoreCase("dr")){
-			return "MTL "+"DR: "+dr_num;
+			return "DDO "+"DR: "+dr_num;
 		}else if(recordType.equalsIgnoreCase("nr")){
-			return "MTL "+"NR: "+nr_num;
+			return "DDO "+"NR: "+nr_num;
 		}else{
-			return "MTL "+"ALL: "+(dr_num+nr_num);
+			return "DDO "+"ALL: "+(dr_num+nr_num);
 		}
 	}
 }
