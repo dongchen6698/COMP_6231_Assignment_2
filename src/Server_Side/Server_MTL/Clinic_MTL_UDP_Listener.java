@@ -29,6 +29,8 @@ public class Clinic_MTL_UDP_Listener implements Runnable{
 				DatagramPacket request = new DatagramPacket(buffer, buffer.length);
 				socket.receive(request);
 				Config_MTL.LOGGER.info("Get request: " + (new String(request.getData()).trim())+ "\n" + "Start a new thread to handle this.");
+				
+				
 				new Connection(socket, request);
 			}
 		}

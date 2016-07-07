@@ -1,0 +1,66 @@
+Jun 25, 2016 4:46:16 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 25, 2016 4:46:16 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 25, 2016 4:47:05 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 25, 2016 4:47:05 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jun 25, 2016 4:47:37 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: adf
+Phone: 123123
+specialization: asdb
+location: mtl
+Start a new thread to handle this.
+Jun 25, 2016 4:47:37 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: adf
+Phone: 123123
+specialization: asdb
+location: mtl
+Jun 25, 2016 4:47:44 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jun 25, 2016 4:47:44 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 05, 2016 9:15:37 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 05, 2016 9:15:37 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr
+Jul 05, 2016 9:17:19 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 003
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abv
+location: mtl
+Start a new thread to handle this.
+Jul 05, 2016 9:17:19 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 003, Transfer Record, Record: RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abv
+location: mtl
+Jul 05, 2016 9:17:27 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener run
+INFO: Get request: 002
+dr
+Start a new thread to handle this.
+Jul 05, 2016 9:17:27 PM Server_Side.Server_LVL.Clinic_LVL_UDP_Listener$Connection <init>
+INFO: Request code: 002, Search HashMap, SearchType: dr

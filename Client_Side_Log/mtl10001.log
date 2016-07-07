@@ -1,0 +1,52 @@
+Jul 05, 2016 9:13:37 PM Client_Side.ManagerClients main
+INFO: ManagerID: mtl10001 log in DSMS.
+Jul 05, 2016 9:13:43 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Doctor Record.
+Jul 05, 2016 9:14:06 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Doctor Record.
+Jul 05, 2016 9:14:16 PM Client_Side.ManagerClients main
+INFO: Manager Creat Doctor Record Succeed!
+Doctor Record Buid Succeed !
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abv
+location: mtl
+
+Jul 05, 2016 9:14:43 PM Client_Side.ManagerClients main
+INFO: Manager Choose Creat Nurse Record.
+Jul 05, 2016 9:15:10 PM Client_Side.ManagerClients main
+INFO: Manager Creat Doctor Record Succeed!
+Nurse Record Buid Succeed !
+RecordID: NR10001
+First Name: dong
+Last Name: aaa
+Designation: junior
+Status: active
+StatusDate: 1990/06/09
+
+Jul 05, 2016 9:15:32 PM Client_Side.ManagerClients main
+INFO: Manager Choose Get Record Counts.
+Jul 05, 2016 9:15:37 PM Client_Side.ManagerClients main
+INFO: Get Record Counts: 
+MTL DR: 3
+LVL DR: 0
+DDO DR: 1
+
+Jul 05, 2016 9:16:50 PM Client_Side.ManagerClients main
+INFO: Manager Choose Transfer Record.
+Jul 05, 2016 9:17:09 PM Client_Side.ManagerClients main
+INFO: Manager Choose Transfer Record.
+Jul 05, 2016 9:17:19 PM Client_Side.ManagerClients main
+INFO: Manager Transfer Record Succeed!
+Transfer doctor record success.
+Jul 05, 2016 9:17:26 PM Client_Side.ManagerClients main
+INFO: Manager Choose Get Record Counts.
+Jul 05, 2016 9:17:27 PM Client_Side.ManagerClients main
+INFO: Get Record Counts: 
+MTL DR: 2
+LVL DR: 1
+DDO DR: 1
+

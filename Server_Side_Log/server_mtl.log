@@ -1,0 +1,87 @@
+Jun 25, 2016 4:43:40 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10005
+Start a new thread to handle this.
+Jun 25, 2016 4:43:40 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10005 valid or not.
+Jun 25, 2016 4:46:03 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10000
+Start a new thread to handle this.
+Jun 25, 2016 4:46:03 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10000 valid or not.
+Jun 25, 2016 4:46:16 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10000 search RecordCounts: 
+MTL DR: 2
+LVL DR: 0
+DDO DR: 1
+
+Jun 25, 2016 4:46:34 PM Server_Side.Server_MTL.Clinic_MTL_Impl createDRecord
+INFO: Manager: mtl10000 Creat Doctor Record: 
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: adf
+Phone: 123123
+specialization: asdb
+location: mtl
+
+Jun 25, 2016 4:47:05 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10000 search RecordCounts: 
+MTL DR: 3
+LVL DR: 0
+DDO DR: 1
+
+Jun 25, 2016 4:47:37 PM Server_Side.Server_MTL.Clinic_MTL_Impl transferRecord
+INFO: Manager: mtl10000 transfer recordID: dr10000 to lvlsuccess
+Jun 25, 2016 4:47:44 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10000 search RecordCounts: 
+MTL DR: 2
+LVL DR: 1
+DDO DR: 1
+
+Jul 05, 2016 9:13:30 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10009
+Start a new thread to handle this.
+Jul 05, 2016 9:13:30 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10009 valid or not.
+Jul 05, 2016 9:13:37 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener run
+INFO: Get request: 001
+mtl10001
+Start a new thread to handle this.
+Jul 05, 2016 9:13:37 PM Server_Side.Server_MTL.Clinic_MTL_UDP_Listener$Connection <init>
+INFO: Request code: 001, Check ManagerID: mtl10001 valid or not.
+Jul 05, 2016 9:14:16 PM Server_Side.Server_MTL.Clinic_MTL_Impl createDRecord
+INFO: Manager: mtl10001 Creat Doctor Record: 
+RecordID: DR10000
+First Name: dong
+Last Name: chen
+Address: montreal
+Phone: 123123
+specialization: abv
+location: mtl
+
+Jul 05, 2016 9:15:10 PM Server_Side.Server_MTL.Clinic_MTL_Impl createNRecord
+INFO: Manager: mtl10001 Creat Nurse Record: 
+RecordID: NR10001
+First Name: dong
+Last Name: aaa
+Designation: junior
+Status: active
+StatusDate: 1990/06/09
+
+Jul 05, 2016 9:15:37 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10001 search RecordCounts: 
+MTL DR: 3
+LVL DR: 0
+DDO DR: 1
+
+Jul 05, 2016 9:17:19 PM Server_Side.Server_MTL.Clinic_MTL_Impl transferRecord
+INFO: Manager: mtl10001 transfer recordID: dr10000 to lvlsuccess
+Jul 05, 2016 9:17:27 PM Server_Side.Server_MTL.Clinic_MTL_Impl getRecordCounts
+INFO: Manager: mtl10001 search RecordCounts: 
+MTL DR: 2
+LVL DR: 1
+DDO DR: 1
+
