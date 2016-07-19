@@ -3,9 +3,6 @@ package Server_Side.Server_COUNT;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.rmi.RemoteException;
-
-import Server_Side.Server_MTL.Config_MTL;
 
 public class RecordID_Assign_Server {
 	private static int startNumber = 10000;
